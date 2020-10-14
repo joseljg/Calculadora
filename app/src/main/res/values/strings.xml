@@ -2,4 +2,10 @@
     <string name="app_name">Calculadora</string>
     <string name="primer_numero">Primer número</string>
     <string name="segundo_numero">Segundo número</string>
+    <string name="bt_text_sumar">+</string>
+    <string name="bt_text_resto">%</string>
+    <string name="bt_text_menos">-</string>
+    <string name="bt_text_multiplicar">*</string>
+    <string name="bt_text_dividir">/</string>
+    <string name="txt_resultado">0</string>
 </resources>

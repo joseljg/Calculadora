@@ -6,48 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/bt_sumar5"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/bt_sumar4"
-        app:layout_constraintTop_toTopOf="@+id/bt_sumar4" />
-
-    <Button
-        android:id="@+id/bt_sumar4"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/bt_sumar2"
-        app:layout_constraintTop_toBottomOf="@+id/bt_sumar2" />
-
-    <Button
-        android:id="@+id/bt_sumar2"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/edt_numero2"
-        app:layout_constraintTop_toBottomOf="@+id/edt_numero2" />
-
     <EditText
         android:id="@+id/edt_numero1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/primer_numero"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned|numberDecimal"
+        android:textColorHint="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,7 +33,8 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/segundo_numero"
-        android:inputType="numberDecimal"
+        android:inputType="numberSigned|numberDecimal"
+        android:textColorHint="@android:color/black"
         app:layout_constraintStart_toStartOf="@+id/edt_numero1"
         app:layout_constraintTop_toBottomOf="@+id/edt_numero1" />
 
@@ -67,20 +42,84 @@
         android:id="@+id/bt_sumar"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/bt_sumar2"
-        app:layout_constraintTop_toTopOf="@+id/bt_sumar2" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/botonmenos"
+        android:onClick="sumar"
+        android:text="@string/bt_text_sumar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_numero2" />
 
     <Button
-        android:id="@+id/bt_sumar3"
+        android:id="@+id/bt_restar"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:text="Button"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:alpha="0.8"
+        android:background="@drawable/botonmenos"
+        android:gravity="center_horizontal|top"
+        android:text="@string/bt_text_menos"
+        android:textSize="30sp"
+        android:onClick="restar"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_sumar"
         app:layout_constraintStart_toEndOf="@+id/bt_sumar"
         app:layout_constraintTop_toTopOf="@+id/bt_sumar" />
+
+    <Button
+        android:id="@+id/bt_multiplicar"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:background="@drawable/botonmenos"
+        android:text="@string/bt_text_multiplicar"
+        android:onClick="multiplicar"
+        app:layout_constraintBottom_toBottomOf="@+id/bt_restar"
+        app:layout_constraintStart_toEndOf="@+id/bt_restar"
+        app:layout_constraintTop_toTopOf="@+id/bt_restar" />
+
+    <Button
+        android:id="@+id/bt_dividir"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/botonmenos"
+        android:text="@string/bt_text_dividir"
+        android:onClick="dividir"
+        app:layout_constraintEnd_toEndOf="@+id/bt_sumar"
+        app:layout_constraintStart_toStartOf="@+id/bt_sumar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_sumar" />
+
+    <Button
+        android:id="@+id/bt_resto"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/botonmenos"
+        android:text="@string/bt_text_resto"
+        android:onClick="resto"
+        app:layout_constraintEnd_toEndOf="@+id/bt_restar"
+        app:layout_constraintStart_toStartOf="@+id/bt_restar"
+        app:layout_constraintTop_toBottomOf="@+id/bt_restar" />
+
+    <TextView
+        android:id="@+id/txt_resutado"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/white"
+        android:text="@string/txt_resultado"
+        android:textSize="100sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_resto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
