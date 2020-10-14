@@ -16,54 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edt_numero1  = (EditText) findViewById(R.id.edt_numero1);
+        edt_numero1 = (EditText) findViewById(R.id.edt_numero1);
         edt_numero2 = (EditText) findViewById(R.id.edt_numero2);
         txt_resultado = (TextView) findViewById(R.id.txt_resutado);
     }
 
-    public void sumar(View view) {
-        String textonumero1 = String.valueOf(edt_numero1.getText());
-        String textonumero2 = String.valueOf(edt_numero2.getText());
-        //----------------------------------------------------------
-        double numero1 = Double.valueOf(textonumero1);
-        double numero2 = Double.valueOf(textonumero2);
-        //----------------------------------------------------------
-        double resultado = numero1 + numero2;
-        //----------------------------------------------------------
-        double resultadoRedondeado = Math.round(resultado * 100.0)/100.0;
-        //----------------------------------------------------------
-        txt_resultado.setText(String.valueOf(resultadoRedondeado));
-    }
-
-    public void restar(View view) {
-        String textonumero1 = String.valueOf(edt_numero1.getText());
-        String textonumero2 = String.valueOf(edt_numero2.getText());
-        //----------------------------------------------------------
-        double numero1 = Double.valueOf(textonumero1);
-        double numero2 = Double.valueOf(textonumero2);
-        //----------------------------------------------------------
-        double resultado = numero1 - numero2;
-        //----------------------------------------------------------
-        double resultadoRedondeado = Math.round(resultado * 100.0)/100.0;
-        //----------------------------------------------------------
-        txt_resultado.setText(String.valueOf(resultadoRedondeado));
-    }
-
-    public void multiplicar(View view) {
-        String textonumero1 = String.valueOf(edt_numero1.getText());
-        String textonumero2 = String.valueOf(edt_numero2.getText());
-        //----------------------------------------------------------
-        double numero1 = Double.valueOf(textonumero1);
-        double numero2 = Double.valueOf(textonumero2);
-        //----------------------------------------------------------
-        double resultado = numero1 * numero2;
-        //----------------------------------------------------------
-        double resultadoRedondeado = Math.round(resultado * 100.0)/100.0;
-        //----------------------------------------------------------
-        txt_resultado.setText(String.valueOf(resultadoRedondeado));
-    }
-
-    public void dividir(View view) {
+    public void calcular(View v)
+    {
         String textonumero1 = String.valueOf(edt_numero1.getText());
         String textonumero2 = String.valueOf(edt_numero2.getText());
         //----------------------------------------------------------
@@ -71,31 +30,34 @@ public class MainActivity extends AppCompatActivity {
         double numero2 = Double.valueOf(textonumero2);
         //----------------------------------------------------------
         double resultado = 0.0;
-        if(numero2 != 0) {
-            resultado = numero1 / numero2;
-        }
-        else{
-            edt_numero2.setError("no puedes poner cero");
-        }
-        //----------------------------------------------------------
-        double resultadoRedondeado = Math.round(resultado * 100.0)/100.0;
-        //----------------------------------------------------------
-        txt_resultado.setText(String.valueOf(resultadoRedondeado));
-    }
-
-    public void resto(View view) {
-        String textonumero1 = String.valueOf(edt_numero1.getText());
-        String textonumero2 = String.valueOf(edt_numero2.getText());
-        //----------------------------------------------------------
-        double numero1 = Double.valueOf(textonumero1);
-        double numero2 = Double.valueOf(textonumero2);
-        //----------------------------------------------------------
-        double resultado = 0.0;
-        if(numero2 != 0) {
-            resultado = numero1 % numero2;
-        }
-        else{
-            edt_numero2.setError("no puedes poner cero");
+        switch(v.getId())
+        {
+            case R.id.bt_sumar: resultado = numero1 + numero2;
+                                break;
+            case R.id.bt_restar: resultado = numero1 - numero2;
+                                break;
+            case R.id.bt_multiplicar: resultado = numero1 * numero2;
+                                break;
+            case R.id.bt_dividir:
+                if(numero2 != 0)
+                {
+                    resultado = numero1 / numero2;
+                }
+                else{
+                    edt_numero2.setError("no puedes poner cero");
+                }
+                break;
+            case R.id.bt_resto:
+                if(numero2 != 0)
+                {
+                    resultado = numero1 % numero2;
+                }
+                else{
+                    edt_numero2.setError("no puedes poner cero");
+                }
+                break;
+            default:
+                break;
         }
         //----------------------------------------------------------
         double resultadoRedondeado = Math.round(resultado * 100.0)/100.0;
